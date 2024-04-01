@@ -1,10 +1,12 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-	entry: ['builders/cnab-400/index.ts'],
-	format: ['cjs', 'esm'],
+	entry: ['src/**/*.ts'],
+	splitting: true,
+	target: 'es5',
+	format: 'cjs',
 	dts: true,
-	splitting: false,
-	sourcemap: true,
+	treeshake: true,
+	bundle: false,
 	clean: true,
 });

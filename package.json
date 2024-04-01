@@ -26,6 +26,7 @@
 	],
 	"homepage": "https://github.com/brenodanyel/cnab-files#readme",
 	"devDependencies": {
+		"@swc/core": "^1.4.11",
 		"ts-node": "^10.9.2",
 		"tsup": "^8.0.2",
 		"typescript": "^5.4.3"
