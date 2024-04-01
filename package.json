@@ -1,9 +1,9 @@
 {
 	"name": "cnab-files",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"description": "package to generate cnab files",
-	"main": "index.js",
 	"scripts": {
+		"build": "tsup",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -18,5 +18,16 @@
 	"bugs": {
 		"url": "https://github.com/brenodanyel/cnab-files/issues"
 	},
-	"homepage": "https://github.com/brenodanyel/cnab-files#readme"
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"homepage": "https://github.com/brenodanyel/cnab-files#readme",
+	"devDependencies": {
+		"ts-node": "^10.9.2",
+		"tsup": "^8.0.2",
+		"typescript": "^5.4.3"
+	}
 }
