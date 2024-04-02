@@ -1,12 +1,10 @@
-export class Position {
-	constructor(public start: number, public end: number) {}
-}
+import { Position } from './helper';
 
-export class CNABBuilder {
-	private row: string
+export abstract class CNABBuilder {
+	private row: string;
 
 	constructor(length: number) {
-		this.row = ' '.repeat(length)
+		this.row = ' '.repeat(length);
 	}
 
 	private normalize(input: string) {
@@ -96,9 +94,9 @@ export class CNABBuilder {
 			'$',
 			';',
 			'_',
-		])
+		]);
 
-		const acentos = {
+		const acentos: Record<string, any> = {
 			á: 'A',
 			é: 'E',
 			í: 'I',
@@ -117,44 +115,43 @@ export class CNABBuilder {
 			ã: 'A',
 			õ: 'O',
 			ç: 'C',
-		}
+		};
 
 		return input
 			.split('')
-			.map((char) => (caracteresAdmitidos.has(char) ? char.toUpperCase() : acentos[char.toLowerCase()] || ' '))
-			.join('')
+			.map((char: string) => (caracteresAdmitidos.has(char) ? char.toUpperCase() : acentos[char.toLowerCase()] || ' '))
+			.join('');
 	}
 
 	public replace(input: string, position: Position, picture: 'X' | '9') {
-		input = this.normalize(input)
+		input = this.normalize(input);
 
-		const before = this.row.slice(0, position.start)
-		const after = this.row.slice(position.end)
+		const before = this.row.slice(0, position.start);
+		const after = this.row.slice(position.end);
 
-		const length = position.end - position.start
-		const diff = length - input.length
+		const length = position.end - position.start;
+		const diff = length - input.length;
 
 		// se o input for menor que o tamanho do campo, preencher com espaços para caber no espaço
 		if (diff > 0) {
 			switch (picture) {
 				case '9':
-					input = '0'.repeat(diff) + input
-					break
+					input = '0'.repeat(diff) + input;
+					break;
 				default:
-					input = input + ' '.repeat(diff)
+					input = input + ' '.repeat(diff);
 			}
 		}
 
 		// se o input for maior que o tamanho do campo, cortar para caber no espaço
 		if (input.length > length) {
-			input = input.slice(0, length)
+			input = input.slice(0, length);
 		}
 
-		this.row = before + input + after
+		this.row = before + input + after;
 	}
 
 	build() {
-		return this.row
+		return this.row;
 	}
 }
-

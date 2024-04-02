@@ -1,6 +1,7 @@
 // 3.6.7. Descrição de registro tipo ‘0’ (Obrigatório) – Header de Retorno
 
-import { CNABBuilder, Position } from '../../cnab-builder';
+import { CNABBuilder } from '../../cnab-builder';
+import { Position } from '../../helper';
 
 export class CNAB400HeaderBuilder extends CNABBuilder {
 	constructor() {
@@ -34,7 +35,7 @@ export class CNAB400HeaderBuilder extends CNABBuilder {
 	// Ver Nota Explicativa NE002
 	setLiteralDeServico(input: string) {
 		const position = new Position(11, 26);
-		return this.replace(input, position, '9');
+		return this.replace(input, position, 'X');
 	}
 
 	// Ver Nota Explicativa NE003
@@ -96,23 +97,3 @@ export class CNAB400HeaderBuilder extends CNABBuilder {
 		return this.replace(input, position, '9');
 	}
 }
-
-const header = new CNAB400HeaderBuilder();
-
-header.setCodigoRegistro('0');
-header.setCodigoRetorno('2');
-header.setLiteralDoRetorno('RETORNO');
-header.setCodigoDoServico('01');
-header.setLiteralDeServico('COBRANCA');
-header.setCodigoAgencia('3154');
-header.setCodigoBeneficiario('1206841');
-header.setNomeDaEmpresa('áéÁîàòâç ASSOCIACAO CIVIL');
-header.setCodigoDoBanco('104');
-header.setNomeDoBanco('C ECON FEDERAL');
-header.setDataDeGeracao('190224');
-header.setMensagemDeRetorno('qualquer coisa aqui');
-header.setVersaoDoLayout('007');
-header.setNumeroSequencialA('001620');
-header.setNumeroSequencialB('1');
-
-console.log(header.build());
