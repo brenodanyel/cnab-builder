@@ -1,6 +1,6 @@
 {
 	"name": "cnab-files",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "package to generate cnab files",
 	"scripts": {
 		"build": "tsup",
