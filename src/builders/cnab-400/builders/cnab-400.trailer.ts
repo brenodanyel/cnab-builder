@@ -1,4 +1,5 @@
-import { CNABBuilder, Position } from '../../cnab-builder';
+import { CNABBuilder } from '../../cnab-builder';
+import { Position } from '../../helper';
 
 export class CNAB400TrailerBuilder extends CNABBuilder {
 	constructor() {
