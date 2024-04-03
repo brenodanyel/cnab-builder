@@ -149,6 +149,8 @@ export abstract class CNABBuilder {
 		}
 
 		this.row = before + input + after;
+
+		return input;
 	}
 
 	build() {
